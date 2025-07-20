@@ -1,0 +1,309 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    background: radial-gradient(circle at center, #0c0c1f 0%, #050513 100%);
+    color: #c3f8ff;
+    font-family: 'Orbitron', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: conic-gradient(from 90deg at center, #00f0ff22, #00ffff11, transparent 60%);
+    animation: rotateBg 30s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+@keyframes rotateBg {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 960px;
+    background: rgba(10, 20, 30, 0.95);
+    border: 2px solid #4fd1ff;
+    border-radius: 24px;
+    padding: 50px;
+    box-shadow: 0 0 40px #4fd1ffaa, 0 0 100px #00eaff33;
+    backdrop-filter: blur(20px);
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    z-index: 2;
+    position: relative;
+}
+
+header h1 {
+    font-size: 3.8rem;
+    color: #4fd1ff;
+    letter-spacing: 0.3em;
+    animation: glowPulse 4s ease-in-out infinite;
+    text-shadow: 0 0 20px #4fd1ff, 0 0 40px #00d5ff;
+}
+
+header .tagline {
+    font-size: 1.4rem;
+    color: #afffff;
+    margin-top: 12px;
+    font-weight: 600;
+    text-shadow: 0 0 12px #00faff88;
+}
+
+/* Main */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    z-index: 2;
+    position: relative;
+}
+
+/* Input Section */
+.input-section {
+    background: linear-gradient(145deg, #0e1c2b, #122f4f);
+    border: 2px solid #00eaff88;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 30px #00eaff44;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-section:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 40px #00eaffaa, 0 0 60px #00aaff88;
+}
+
+.input-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.9rem;
+    color: #00eaff;
+    text-shadow: 0 0 15px #00eaffcc;
+}
+
+/* Inputs */
+textarea, input[type="url"], input[type="file"] {
+    width: 100%;
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid #00d5ff88;
+    background: #071a2a;
+    color: #e0ffff;
+    font-size: 1.1rem;
+    box-shadow: inset 0 0 15px #00d5ffaa;
+    resize: vertical;
+    transition: all 0.4s ease;
+}
+
+textarea::placeholder,
+input::placeholder {
+    color: #00eaffaa;
+}
+
+textarea:focus,
+input[type="url"]:focus,
+input[type="file"]:focus {
+    outline: none;
+    box-shadow: 0 0 25px #00eaffcc, inset 0 0 10px #00eaff99;
+    background: #0e2a3f;
+}
+
+/* Button */
+.btn {
+    margin-top: 25px;
+    padding: 16px 34px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 22px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #4fd1ff, #0fd3ff, #00aaff);
+    color: #001f3f;
+    box-shadow: 0 0 25px #00f0ffcc;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, #ffffff33, transparent 70%);
+    animation: buttonPulse 6s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 45px #00f0ffcc, 0 0 60px #00f0ff88;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+}
+
+/* Result Section */
+.result-section {
+    background: linear-gradient(135deg, #112e44, #18354f);
+    border: 2px solid transparent;
+    border-radius: 18px;
+    padding: 30px;
+    min-height: 150px;
+    box-shadow: inset 0 0 25px #00eaffaa, 0 0 30px #00f0ff44;
+    color: #e0ffff;
+    font-size: 1.3rem;
+    white-space: pre-wrap;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.result-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, #00f0ff33, transparent 70%);
+    animation: resultBgPulse 8s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.result-section:hover {
+    transform: scale(1.02);
+    box-shadow: inset 0 0 30px #00eaffcc, 0 0 50px #00f0ff88;
+    border-color: #00f0ff;
+}
+
+.result-section h2 {
+    margin-bottom: 18px;
+    font-size: 1.8rem;
+    color: #4fd1ff;
+    text-shadow: 0 0 20px #4fd1ffcc, 0 0 40px #00f0ff88;
+    background: linear-gradient(90deg, #4fd1ff, #00f0ff, #4fd1ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientText 3s ease-in-out infinite;
+}
+
+.result-section p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #afffff;
+    text-shadow: 0 0 10px #00eaff88;
+    z-index: 1;
+    position: relative;
+}
+
+/* Background animation */
+@keyframes resultBgPulse {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+}
+
+/* Gradient text animation */
+@keyframes gradientText {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 1.05rem;
+    color: #00eaffcc;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 12px #00faff88;
+}
+
+/* Header animation */
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow: 0 0 15px #4fd1ff, 0 0 30px #4fd1ff;
+    }
+    50% {
+        text-shadow: 0 0 25px #00f0ff, 0 0 50px #00cfff;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header .tagline {
+        font-size: 1.2rem;
+    }
+
+    .input-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 1.1rem;
+    }
+
+    .result-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .result-section p {
+        font-size: 1rem;
+    }
+}

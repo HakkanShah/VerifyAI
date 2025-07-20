@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VerifyAI - Fake News & Deepfake Detector</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>VerifyAI</h1>
+            <p class="tagline">Detect Fake News & Deepfake with AI Precision</p>
+        </header>
+        <main>
+            <section class="input-section">
+                <h2>Analyze Text</h2>
+                <textarea id="text-input" placeholder="Paste news text here to analyze..." rows="6"></textarea>
+                <button id="analyze-text-btn" class="btn sci-fi-btn">Analyze Text</button>
+            </section>
+            <section class="input-section">
+                <h2>Analyze Video</h2>
+                <input type="url" id="video-url" placeholder="Enter video URL for deepfake detection" />
+                <button id="analyze-video-btn" class="btn dystopian-btn">Analyze Video</button>
+            </section>
+            <section class="input-section">
+                <h2>Analyze Image</h2>
+                <input type="file" id="image-input" accept="image/*" />
+                <button id="analyze-image-btn" class="btn dystopian-btn">Analyze Image</button>
+            </section>
+            <section id="result-section" class="result-section">
+                <h2>Analysis Result</h2>
+                <div id="result-output" class="result-output">
+                    <!-- Results will appear here -->
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>© 2024 VerifyAI. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
