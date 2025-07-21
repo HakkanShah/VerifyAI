@@ -92,11 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
         spinner.style.display = 'inline-block';
         const loadingInterval = showLoading();
         scrollToResult();
+        // Show result section only after analysis
+        resultSection.style.display = 'none';
         setTimeout(() => {
             clearInterval(loadingInterval);
             spinner.style.display = 'none';
             const result = analyzeText(text);
             resultOutput.textContent = result;
+            resultSection.style.display = 'block';
         }, 1500);
     });
 
@@ -106,11 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
         spinner.style.display = 'inline-block';
         const loadingInterval = showLoading();
         scrollToResult();
+        // Show result section only after analysis
+        resultSection.style.display = 'none';
         setTimeout(() => {
             clearInterval(loadingInterval);
             spinner.style.display = 'none';
             const result = analyzeVideo(url);
             resultOutput.textContent = result;
+            resultSection.style.display = 'block';
         }, 1500);
     });
 
@@ -120,11 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
         spinner.style.display = 'inline-block';
         const loadingInterval = showLoading();
         scrollToResult();
+        // Show result section only after analysis
+        resultSection.style.display = 'none';
         setTimeout(() => {
             clearInterval(loadingInterval);
             spinner.style.display = 'none';
             const result = analyzeImage(file);
             resultOutput.textContent = result;
+            resultSection.style.display = 'block';
         }, 1500);
     });
 });

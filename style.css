@@ -218,6 +218,7 @@ input[type="file"]:focus {
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
+    display: none; /* hide result section initially */
 }
 
 .result-section::before {
@@ -309,6 +310,25 @@ footer {
         border: none; /* remove border on mobile */
         box-shadow: 0 0 15px #4fd1ff55, 0 0 40px #00eaff11; /* softer shadow */
     }
+
+    .tab-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .tab-btn {
+        font-size: 1rem;
+        padding: 10px 16px;
+    }
+
+    .hero-section h2 {
+        font-size: 2rem;
+    }
+
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+}
 }
 
 /* Hero Section */
