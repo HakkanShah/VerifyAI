@@ -94,15 +94,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const spinner = analyzeTextBtn.querySelector('.loading-spinner');
         spinner.style.display = 'inline-block';
         const loadingInterval = showLoading();
-        scrollToResult();
-        // Show result section only after analysis
+        // Hide result section before analysis
         resultSection.style.display = 'none';
         setTimeout(() => {
             clearInterval(loadingInterval);
             spinner.style.display = 'none';
             const result = analyzeText(text);
-            resultOutput.textContent = result;
+            resultOutput.innerHTML = addEmojiToResult(result);
             resultSection.style.display = 'block';
+            scrollToResult(); // Scroll after showing result
         }, 1500);
     });
 
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(loadingInterval);
             spinner.style.display = 'none';
             const result = analyzeVideo(url);
-            resultOutput.textContent = result;
+            resultOutput.innerHTML = addEmojiToResult(result);
             resultSection.style.display = 'block';
         }, 1500);
     });
@@ -135,8 +135,21 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(loadingInterval);
             spinner.style.display = 'none';
             const result = analyzeImage(file);
-            resultOutput.textContent = result;
+            resultOutput.innerHTML = addEmojiToResult(result);
             resultSection.style.display = 'block';
         }, 1500);
     });
+
+    function addEmojiToResult(resultText) {
+        // Simple logic to add emoji based on confidence or probability keywords
+        let emoji = '❓';
+        if (resultText.includes('High')) {
+            emoji = '🔥';
+        } else if (resultText.includes('Medium')) {
+            emoji = '⚠️';
+        } else if (resultText.includes('Low')) {
+            emoji = '✅';
+        }
+        return `<span class="result-emoji">${emoji}</span>${resultText.replace(/\n/g, '<br>')}`;
+    }
 });
