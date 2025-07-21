@@ -13,20 +13,34 @@
             <p class="tagline">Detect Fake News & Deepfake with AI Precision</p>
         </header>
         <main>
-            <section class="input-section">
-                <h2>Analyze Text</h2>
-                <textarea id="text-input" placeholder="Paste news text here to analyze..." rows="6"></textarea>
-                <button id="analyze-text-btn" class="btn sci-fi-btn">Analyze Text</button>
+            <section id="hero-section" class="hero-section">
+                <h2>Welcome to VerifyAI</h2>
+                <p>Your AI-powered tool to detect fake news and deepfakes with precision.</p>
+                <button id="start-btn" class="btn sci-fi-btn">Get Started</button>
             </section>
-            <section class="input-section">
-                <h2>Analyze Video</h2>
-                <input type="url" id="video-url" placeholder="Enter video URL for deepfake detection" />
-                <button id="analyze-video-btn" class="btn dystopian-btn">Analyze Video</button>
-            </section>
-            <section class="input-section">
-                <h2>Analyze Image</h2>
-                <input type="file" id="image-input" accept="image/*" />
-                <button id="analyze-image-btn" class="btn dystopian-btn">Analyze Image</button>
+            <section id="tabs" class="tabs" style="display:none;">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="text-analysis">🔤 Text Analysis</button>
+                    <button class="tab-btn" data-tab="video-analysis">🎥 Video Analysis</button>
+                    <button class="tab-btn" data-tab="image-analysis">🖼️ Image Analysis</button>
+                </div>
+                <div class="tab-contents">
+                    <section id="text-analysis" class="tab-content active">
+                        <h2>Analyze Text</h2>
+                        <textarea id="text-input" placeholder="Paste news text here to analyze..." rows="6"></textarea>
+                        <button id="analyze-text-btn" class="btn sci-fi-btn">Analyze Text<span class="loading-spinner" style="display:none;"></span></button>
+                    </section>
+                    <section id="video-analysis" class="tab-content">
+                        <h2>Analyze Video</h2>
+                        <input type="url" id="video-url" placeholder="Enter video URL for deepfake detection" />
+                        <button id="analyze-video-btn" class="btn dystopian-btn">Analyze Video<span class="loading-spinner" style="display:none;"></span></button>
+                    </section>
+                    <section id="image-analysis" class="tab-content">
+                        <h2>Analyze Image</h2>
+                        <input type="file" id="image-input" accept="image/*" />
+                        <button id="analyze-image-btn" class="btn dystopian-btn">Analyze Image<span class="loading-spinner" style="display:none;"></span></button>
+                    </section>
+                </div>
             </section>
             <section id="result-section" class="result-section">
                 <h2>Analysis Result</h2>

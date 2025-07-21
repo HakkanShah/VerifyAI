@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultOutput = document.getElementById('result-output');
     const resultSection = document.getElementById('result-section');
 
+    const heroSection = document.getElementById('hero-section');
+    const tabsSection = document.getElementById('tabs');
+    const startBtn = document.getElementById('start-btn');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
     function getRandomConfidence() {
         const levels = ['Low', 'Medium', 'High'];
         return levels[Math.floor(Math.random() * levels.length)];
@@ -58,12 +64,37 @@ document.addEventListener('DOMContentLoaded', () => {
         resultSection.scrollIntoView({ behavior: 'smooth' });
     }
 
+    startBtn.addEventListener('click', () => {
+        heroSection.style.display = 'none';
+        tabsSection.style.display = 'block';
+    });
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            tabContents.forEach(content => {
+                if (content.id === targetTab) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+        });
+    });
+
     analyzeTextBtn.addEventListener('click', () => {
         const text = textInput.value;
+        const spinner = analyzeTextBtn.querySelector('.loading-spinner');
+        spinner.style.display = 'inline-block';
         const loadingInterval = showLoading();
         scrollToResult();
         setTimeout(() => {
             clearInterval(loadingInterval);
+            spinner.style.display = 'none';
             const result = analyzeText(text);
             resultOutput.textContent = result;
         }, 1500);
@@ -71,10 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     analyzeVideoBtn.addEventListener('click', () => {
         const url = videoUrlInput.value;
+        const spinner = analyzeVideoBtn.querySelector('.loading-spinner');
+        spinner.style.display = 'inline-block';
         const loadingInterval = showLoading();
         scrollToResult();
         setTimeout(() => {
             clearInterval(loadingInterval);
+            spinner.style.display = 'none';
             const result = analyzeVideo(url);
             resultOutput.textContent = result;
         }, 1500);
@@ -82,10 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     analyzeImageBtn.addEventListener('click', () => {
         const file = imageInput.files[0];
+        const spinner = analyzeImageBtn.querySelector('.loading-spinner');
+        spinner.style.display = 'inline-block';
         const loadingInterval = showLoading();
         scrollToResult();
         setTimeout(() => {
             clearInterval(loadingInterval);
+            spinner.style.display = 'none';
             const result = analyzeImage(file);
             resultOutput.textContent = result;
         }, 1500);
