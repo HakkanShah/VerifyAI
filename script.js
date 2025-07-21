@@ -83,6 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     content.classList.remove('active');
                 }
             });
+
+            // Hide result section on tab switch
+            resultSection.style.display = 'none';
         });
     });
 
