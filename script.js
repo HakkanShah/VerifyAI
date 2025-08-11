@@ -105,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollToResult(); // Scroll after showing result
         }, 1500);
     });
-
     analyzeVideoBtn.addEventListener('click', () => {
         const url = videoUrlInput.value;
         const spinner = analyzeVideoBtn.querySelector('.loading-spinner');
