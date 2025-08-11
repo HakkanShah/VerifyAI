@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageInput = document.getElementById('image-input');
     const resultOutput = document.getElementById('result-output');
     const resultSection = document.getElementById('result-section');
-
     const heroSection = document.getElementById('hero-section');
     const tabsSection = document.getElementById('tabs');
     const startBtn = document.getElementById('start-btn');
