@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function scrollToResult() {
         resultSection.scrollIntoView({ behavior: 'smooth' });
     }
-
     startBtn.addEventListener('click', () => {
         heroSection.style.display = 'none';
         tabsSection.style.display = 'block';
