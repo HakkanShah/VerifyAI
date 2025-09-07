@@ -149,4 +149,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return `<span class="result-emoji">${emoji}</span>${resultText.replace(/\n/g, '<br>')}`;
     }
-});
+}); 
