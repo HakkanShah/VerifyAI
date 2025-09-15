@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    analyzeTextBtn.addEventListener('click', () => {
+   analyzeTextBtn.addEventListener('click', () => {
         const text = textInput.value;
         const spinner = analyzeTextBtn.querySelector('.loading-spinner');
         spinner.style.display = 'inline-block';
