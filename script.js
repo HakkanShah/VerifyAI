@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function addEmojiToResult(resultText) {
-        
+       
         let emoji = '❓';
         if (resultText.includes('High')) {
             emoji = '🔥';
