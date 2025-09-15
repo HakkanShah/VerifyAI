@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function addEmojiToResult(resultText) {
-        // Simple logic to add emoji based on confidence or probability keywords
+        
         let emoji = '❓';
         if (resultText.includes('High')) {
             emoji = '🔥';
