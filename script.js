@@ -118,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
             resultSection.style.display = 'block';
         }, 1500);
     });
-
     analyzeImageBtn.addEventListener('click', () => {
         const file = imageInput.files[0];
         const spinner = analyzeImageBtn.querySelector('.loading-spinner');
