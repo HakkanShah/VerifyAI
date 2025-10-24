@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getRandomProbability() {
-        return Math.floor(Math.random() * 101); // 0 to 100%
+        return Math.floor(Math.random() * 101);
     }
 
     function analyzeText(text) {
@@ -147,4 +147,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return `<span class="result-emoji">${emoji}</span>${resultText.replace(/\n/g, '<br>')}`;
     }
-});
+}); 
