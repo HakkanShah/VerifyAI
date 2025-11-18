@@ -1,0 +1,22 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Newspaper } from "lucide-react";
+
+export default function BlogsPage() {
+    return (
+        <div className="container mx-auto px-4 py-12 flex items-center justify-center min-h-[calc(100vh-10rem)]">
+            <Card className="w-full max-w-2xl text-center bg-card/70 backdrop-blur-sm border-border/50">
+                <CardHeader>
+                    <CardTitle className="flex items-center justify-center gap-3 text-2xl font-headline text-primary">
+                        <Newspaper className="h-8 w-8" />
+                        // SYSTEM_LOGS //
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-lg text-muted-foreground">
+                        Blog section coming soon. Stay tuned for updates from the digital frontier.
+                    </p>
+                </CardContent>
+            </Card>
+        </div>
+    );
+}

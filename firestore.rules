@@ -1,0 +1,156 @@
+/**
+ * @file Firestore Security Rules
+ * @description This ruleset enforces a strict user-ownership model for the VerifyAI platform.
+ *
+ * Data Structure:
+ * - All user data and associated verification records are nested under the `/users/{userId}` path.
+ * - Each user has their own `textVerifications`, `imageVerifications`, and `videoVerifications` subcollections.
+ *
+ * Key Security Decisions:
+ * - Users can only access their own data.
+ * - Listing other users is disallowed.
+ * - Data schema is not strictly enforced during this prototyping phase, but ownership is.
+ *
+ * Denormalization for Authorization:
+ * - The `userId` is embedded in the document path, allowing for efficient ownership checks without additional `get()` calls.
+ *
+ * Structural Segregation:
+ * - User-specific data (verifications) is stored in user subcollections, guaranteeing data privacy.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Manages user profile access.
+     * @path /users/{userId}
+     * @allow (create) User with ID 'user123' can create their own profile.
+     * @allow (get) User with ID 'user123' can read their own profile.
+     * @allow (update) User with ID 'user123' can update their own profile.
+     * @allow (delete) User with ID 'user123' can delete their own profile.
+     * @deny (create) User with ID 'user456' cannot create a profile with ID 'user123'.
+     * @principle Enforces document ownership for all operations.
+     */
+    match /users/{userId} {
+      // Check if the user is signed in.
+      function isSignedIn() {
+        return request.auth != null;
+      }
+
+      //Check if the user id is the owner of the document.
+      function isOwner(userId) {
+        return request.auth.uid == userId;
+      }
+
+      // Check if the user is signed in and is the owner of existing document.
+      function isExistingOwner(userId) {
+        return isSignedIn() && isOwner(userId) && resource != null;
+      }
+
+      allow get: if isOwner(userId);
+      allow list: if false; // Listing users is not permitted.
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Manages text verification requests and results for a specific user.
+     * @path /users/{userId}/textVerifications/{textVerificationId}
+     * @allow (create) User with ID 'user123' can create a text verification request under their profile.
+     * @allow (get) User with ID 'user123' can read their own text verification request with ID 'text123'.
+     * @allow (update) User with ID 'user123' can update their own text verification request with ID 'text123'.
+     * @allow (delete) User with ID 'user123' can delete their own text verification request with ID 'text123'.
+     * @deny (create) User with ID 'user456' cannot create a text verification request under user 'user123'.
+     * @principle Enforces document ownership for all operations.
+     */
+    match /users/{userId}/textVerifications/{textVerificationId} {
+        // Check if the user is signed in.
+        function isSignedIn() {
+          return request.auth != null;
+        }
+
+        //Check if the user id is the owner of the document.
+        function isOwner(userId) {
+          return request.auth.uid == userId;
+        }
+
+        // Check if the user is signed in and is the owner of existing document.
+        function isExistingOwner(userId) {
+          return isSignedIn() && isOwner(userId) && resource != null;
+        }
+        
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Manages image verification requests and results for a specific user.
+     * @path /users/{userId}/imageVerifications/{imageVerificationId}
+     * @allow (create) User with ID 'user123' can create an image verification request under their profile.
+     * @allow (get) User with ID 'user123' can read their own image verification request with ID 'image123'.
+     * @allow (update) User with ID 'user123' can update their own image verification request with ID 'image123'.
+     * @allow (delete) User with ID 'user123' can delete their own image verification request with ID 'image123'.
+     * @deny (create) User with ID 'user456' cannot create an image verification request under user 'user123'.
+     * @principle Enforces document ownership for all operations.
+     */
+    match /users/{userId}/imageVerifications/{imageVerificationId} {
+        // Check if the user is signed in.
+        function isSignedIn() {
+          return request.auth != null;
+        }
+
+        //Check if the user id is the owner of the document.
+        function isOwner(userId) {
+          return request.auth.uid == userId;
+        }
+
+        // Check if the user is signed in and is the owner of existing document.
+        function isExistingOwner(userId) {
+          return isSignedIn() && isOwner(userId) && resource != null;
+        }
+        
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Manages video verification requests and results for a specific user.
+     * @path /users/{userId}/videoVerifications/{videoVerificationId}
+     * @allow (create) User with ID 'user123' can create a video verification request under their profile.
+     * @allow (get) User with ID 'user123' can read their own video verification request with ID 'video123'.
+     * @allow (update) User with ID 'user123' can update their own video verification request with ID 'video123'.
+     * @allow (delete) User with ID 'user123' can delete their own video verification request with ID 'video123'.
+     * @deny (create) User with ID 'user456' cannot create a video verification request under user 'user123'.
+     * @principle Enforces document ownership for all operations.
+     */
+    match /users/{userId}/videoVerifications/{videoVerificationId} {
+        // Check if the user is signed in.
+        function isSignedIn() {
+          return request.auth != null;
+        }
+
+        //Check if the user id is the owner of the document.
+        function isOwner(userId) {
+          return request.auth.uid == userId;
+        }
+
+        // Check if the user is signed in and is the owner of existing document.
+        function isExistingOwner(userId) {
+          return isSignedIn() && isOwner(userId) && resource != null;
+        }
+
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId);
+        allow update: if isExistingOwner(userId);
+        allow delete: if isExistingOwner(userId);
+    }
+  }
+}
