@@ -89,7 +89,7 @@ VerifyAi/
 ## Installation
 Clone the repository
 ```
-git clone https://github.com/yourusername/verifyai.git
+git clone https://github.com/HakkanShah/verifyai.git
 cd verifyai
 ```
 ### Install dependencies
